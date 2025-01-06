@@ -1,5 +1,18 @@
 const model = require('./Registration_Model');
 
+// get api
+
+const getuser = async (req, res) => {
+    try {
+        const data = await model.find()
+        res.status(200).send({ data })
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({ message: 'internal server error' })
+    }
+}
+
+
 // post api 
 
 const adduser = async (req, res) => {
@@ -17,15 +30,7 @@ const adduser = async (req, res) => {
     }
 }
 
-const getuser = async (req, res) => {
-    try {
-        const data = await model.find()
-        res.status(200).send({ data })
-    } catch (error) {
-        console.log(error);
-        return res.status(400).json({ message: 'internal server error' })
-    }
-}
+// Delete api
 
 const deleteuser = async (req, res) => {
     try {
@@ -35,6 +40,8 @@ const deleteuser = async (req, res) => {
         res.status(500).send(error)
     }
 }
+
+// Update api
 
 const updateuser = async (req, res) => {
     const { fname, email, mobile, address, city, gender, subject } = req.body;

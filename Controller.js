@@ -40,6 +40,9 @@ const deletedata = async (req, res) => {
     }
 }
 
+
+// Update api
+
 const putdata = async (req, res) => {
     const { ctitle, ctext } = req.body;
     try {

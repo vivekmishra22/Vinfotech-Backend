@@ -1,15 +1,16 @@
 const express = require('express');
+
 const { getuser, adduser, deleteuser, updateuser } = require('./Registration_Controller');
 
 const route = express.Router();
 
-route.get('/getdata', getuser);
+route.get('/getuser', getuser);
 
-route.post('/postdata', adduser);
+route.post('/postuser', adduser);
 
-route.delete('/deletedata/:id', deleteuser);
+route.delete('/deleteuser/:id', deleteuser);
 
-route.put('/putdata/:_id', updateuser);
+route.put('/putuser/:_id', updateuser);
 
 
 module.exports = route;
