@@ -16,10 +16,10 @@ const getuser = async (req, res) => {
 // post api 
 
 const adduser = async (req, res) => {
-    const { fname, email, mobile, address, city, gender, subject } = req.body;
+    const { fname, email, password, mobile, address, city, gender, subject } = req.body;
     try {
         const data = new model({
-            fname, email, mobile, address, city, gender, subject
+            fname, email, password, mobile, address, city, gender, subject
         });
         const userdata = await data.save()
         res.send({ userdata });
@@ -44,7 +44,7 @@ const deleteuser = async (req, res) => {
 // Update api
 
 const updateuser = async (req, res) => {
-    const { fname, email, mobile, address, city, gender, subject } = req.body;
+    const { fname, email, password, mobile, address, city, gender, subject } = req.body;
     try {
         const data = await model.updateOne(
             { _id: req.params._id },
@@ -52,6 +52,7 @@ const updateuser = async (req, res) => {
                 $set: {
                     fname,
                     email,
+                    password,
                     mobile,
                     address,
                     city,

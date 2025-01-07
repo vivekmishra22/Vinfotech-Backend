@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const Register = mongoose.Schema({
     fname:String,
     email:String,
+    password:String,
     mobile:Number,
     address:String,
     city:String,
