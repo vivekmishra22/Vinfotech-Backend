@@ -1,9 +1,11 @@
 const express = require('express');
-const { getdata, add, deletedata, putdata } = require('./Controller');
+const { getdata, add, GetuserById, deletedata, putdata } = require('./Controller');
 
 const route = express.Router();
 
 route.get('/getdata', getdata);
+
+route.get('/getuserdata/:_id', GetuserById);
 
 route.post('/postdata', add);
 

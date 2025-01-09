@@ -1,6 +1,6 @@
 const model = require('./Model');
 
-// get api
+// GET API (Fetch All Data)
 
 const getdata = async (req, res) => {
     try {
@@ -9,6 +9,19 @@ const getdata = async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(400).json({ message : 'internal server error'})
+    }
+}
+
+// GET API ONLY FIND ONE
+const GetuserById = async (req, res) => {
+    try {
+        const { _id } = req.params
+        const userData = await model.findOne({ _id: _id })
+        res.status(200).send({ userData })
+
+    } catch (err) {
+        // res.status(400).send(err)
+        console.log(err)
     }
 }
 
@@ -70,4 +83,4 @@ const putdata = async (req, res) => {
 
 
 
-module.exports = { getdata, add, deletedata, putdata };
+module.exports = { getdata, add, GetuserById, deletedata, putdata };
