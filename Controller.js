@@ -31,7 +31,8 @@ const add = async (req, res) => {
     const { ctitle, ctext } = req.body;
     try {
         const data = new model({
-            ctitle, ctext
+            ctitle, ctext, 
+            image:req.file.filename
         });
         const userdata = await data.save()
         res.send({ userdata });
@@ -66,7 +67,8 @@ const putdata = async (req, res) => {
             {
                 $set:{
                     ctitle,
-                    ctext
+                    ctext,
+                    image:req.file.filename
                 }
             },
         );
