@@ -8,9 +8,23 @@ const getdata = async (req, res) => {
         res.status(200).send({ data })
     } catch (error) {
         console.log(error);
-        return res.status(400).json({ message : 'internal server error'})
+        return res.status(500).json({ message : 'internal server error'})
     }
 }
+
+// const getdata = async (req, res) => {
+//     try {
+//         const data = await model.find();
+//         if (!data.length) {
+//             return res.status(404).json({ message: 'No records found' });
+//         }
+//         res.status(200).json({ data });
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ message: 'Internal server error' });
+//     }
+// };
+
 
 // GET API ONLY FIND ONE
 const GetuserById = async (req, res) => {
@@ -25,7 +39,26 @@ const GetuserById = async (req, res) => {
     }
 }
 
+// const GetuserById = async (req, res) => {
+//     try {
+//         const { _id } = req.params;
+//         if (!_id) {
+//             return res.status(400).json({ message: 'ID is required' });
+//         }
+//         const userData = await model.findOne({ _id });
+//         if (!userData) {
+//             return res.status(404).json({ message: 'User not found' });
+//         }
+//         res.status(200).json({ userData });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ message: 'Internal server error' });
+//     }
+// };
+
+
 // post api
+
 
 const add = async (req, res) => {
     const { ctitle, ctext } = req.body;
