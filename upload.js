@@ -12,17 +12,24 @@ const photoStorage = multer.diskStorage({
         // `null` indicates no error, and the second argument is the destination path
         cb(null, path.join(__dirname, './Images'))      // Saves/stores files inside the "Images" folder in the current directory
     },
+
+    // Define the filename for uploaded files
     filename: (req, file, cb) => {
+
+        // The original file name is used as the storage name
         cb(null, file.originalname)
     }
 })
 
+// Configure the `multer` middleware with the storage engine and file size limits
 const photoUpload = multer({
+
+    // Setting the storage engine defined above
     storage: photoStorage,
-    limits: { fileSize: 5 * 1024 * 1024 * 1024 },
-}).single('image');
+    limits: { fileSize: 5 * 1024 * 1024 * 1024 },       // Limiting the file size to 5GB (5 * 1024 * 1024 * 1024 bytes)
+}).single('image');                                     // Accepts a **single** file with the field name "image"
 
-
+// Export the `photoUpload` middleware to be used in other parts of the application
 module.exports = { photoUpload };
 
 // const photoUpload1 = multer({
