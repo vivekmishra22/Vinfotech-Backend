@@ -1,0 +1,96 @@
+Q1. Node.js
+-> It is an open source
+- Runtime Environment: Node.js is a runtime environment that allows you to run JavaScript on the server side.
+- Built on Chrome's V8 JavaScript engine,  It uses Google's V8 JavaScript engine to execute code
+- Features of Node.js
+    Asynchronous & Non-blocking : Handles multiple operations simultaneously without blocking
+    Fast Execution: Uses the V8 engine, making it very fast
+    Cross-platform: Runs on Windows, macOS, and Linux
+    Uses npm (Node Package Manager) for managing dependencies.
+- Node.js comes with several built-in modules
+    1. fs (File System)
+        Handles file operations like reading, writing, updating, and deleting files.
+    2. http (Hypertext Transfer Protocol)
+        Creates and handles HTTP servers and clients.
+    3. path
+        Used to handle and transform file paths.
+    4. os (Operating System)
+        Provides system-related information.
+* Popular frameworks built on Node.js
+    1. Express.js 🚀 (Most Popular Web Framework)
+    2. NestJS ⚡ (Enterprise-Grade, TypeScript-Based)
+    3. NestJS
+
+Q2. Express.js - The Most Popular Node.js Framework 🚀
+-> A minimal, fast and Powerfull web framework for Node.js.
+- Helps in building web applications and RESTful APIs.
+- Used by Netflix, Uber, PayPal, IBM, and more!
+
+* Key features
+    1. Routing:
+        Define routes for handling HTTP requests (GET, POST, PUT, DELETE, etc.).
+    2. Middleware:
+        Functions that have access to the request (req), response (res), and the next middleware in the cycle.
+        Used for tasks like logging, authentication, and error handling.
+    3. API Development:
+        Ideal for building RESTful APIs
+    4. Static Files:
+        Serve static files (e.g., CSS, images, JavaScript) using the express.static middleware.
+    5. Handling JSON & Form Data
+    6. Handling URL Parameters & Query Strings 
+
+Q3. API (Application Programming Interface) 🚀
+->  is a set of rules and protocols that allows different software applications to communicate with each other.
+- It handle HTTP request ( like GET, POST, PUT, DELETE ) and respond with data in format such as JSON, HTML or TEEXT
+-  It defines how requests and responses should be structured.
+- It act as a internediatry/ Mediator
+
+REST APIs use HTTP methods to perform operations on resources (data).
+
+HTTP    Method	                Purpose	Example Endpoint
+GET	    Read data	            /users (Get all users)
+POST	Create new data	        /users (Add a new user)
+PUT	    Update existing data	/users/1 (Update user with ID 1)
+DELETE	Remove data	            /users/1 (Delete user with ID 1)
+
+✔ Implement CRUD Operations
+✔ Connect to a Database (MongoDB/MySQL)
+
+* Key Concepts in APIs
+
+    1. Endpoints:
+    URLs where APIs are accessed (e.g., /users, /products).
+
+    2. HTTP Methods:
+        GET: Retrieve data.
+        POST: Create new data.
+        PUT/PATCH: Update data.
+        DELETE: Remove data.
+
+    3. Request and Response:
+        Request: Sent by the client to the server (includes headers, body, and parameters).
+        Response: Sent by the server to the client (includes status code, headers, and body).
+
+    4. Status Codes:
+        2xx: Success (e.g., 200 OK, 201 Created).
+        4xx: Client errors (e.g., 400 Bad Request, 404 Not Found).
+        5xx: Server errors (e.g., 500 Internal Server Error).
+
+Q4. What is MongoDB?
+->  MongoDB is a NoSQL database that stores data in a JSON-like format (BSON - Binary JSON)
+- It a great choice for modern applications.
+- Used by Facebook, Uber, Google, eBay, and more!
+- It provide document-oriented approach for storing and retrieving data.
+
+MongoDB vs SQL (Relational Databases)
+
+Feature         MongoDB (NoSQL)	            SQL (Relational)
+Data Model	    Document-based	            Table-based
+Schema	        Dynamic	                    Fixed
+Query Language	MongoDB Query Language	    SQL
+Relationships	Embedded documents	        Joins
+
+Q. Mongoose - MongoDB ODM (Object Data Modeling) Library 🚀
+-> Mongoose is an ODM (Object Data Modeling) library for MongoDB and Node.js.
+- It provides a schema-based solution
+- Used to interact with MongoDB databases
