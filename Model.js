@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')    // Import the Mongoose library to interact with MongoDB
 
-const Course = mongoose.Schema({  // Defining the schema for the "Course" model, A schema defines the structure of documents in a collection
+const Course = mongoose.Schema({  // Defining the schema for the "mern" model, A schema defines the structure of documents in a collection
 
     ctitle:String,  // Define a field `ctitle` of type String to store the course title
     ctext:String,   // Define a field `ctext` of type String to store the course description or text

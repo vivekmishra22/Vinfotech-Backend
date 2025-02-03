@@ -5,7 +5,8 @@ const model = require('./Model');
 const getdata = async (req, res) => {
     try {
 
-        // Fetch all records from the database using the 'find' method, await keyword wait util promises resolved or reject
+        // Fetch all records from the database using the 'find' method
+        // The 'await' keyword waits until the promise is resolved or rejected.
         const data = await model.find()  
         // Send the fetched data as a response with a 200 status code
         res.status(200).send({ data })  
@@ -14,8 +15,7 @@ const getdata = async (req, res) => {
 
         // Log the error to the console for debugging
         console.log(error);     
-        // If an error occurs during saving, log it and send a 500 internal server error response
-        // Send a 500 status code with an error message if something goes wrong, 
+        // If an error occurs during fetching, log it and Send a 500 status code with an error message as a response
         return res.status(500).json({ message: 'internal server error' })       
 
     }
@@ -34,7 +34,11 @@ const GetuserById = async (req, res) => {
         res.status(200).send({ userData })
 
     } catch (err) {
+
+         // Log the error to the console for debugging.
         console.log(err)
+        // If an error occurs, send a 500 internal server error response.
+        res.status(500).json({ message: 'Internal server error' });
     }
 }
 
@@ -44,14 +48,15 @@ const GetuserById = async (req, res) => {
 const add = async (req, res) => {
 
     // Extract `ctitle` and `ctext` from the request body
-    const { ctitle, ctext } = req.body;
+    const { ctitle, ctext } = req.body;             // contains data sent by the client, typically in JSON format
     
     try {
 
         // Create a new document using the Mongoose model
         const data = new model({
             ctitle, ctext,
-            // Extract the filename of the uploaded file, this stores the filename of the uploaded image
+            // Extract the filename of the uploaded file
+            // Store the filename of the uploaded image (Multer handles the file upload).
             image: req.file.filename        
         });
 

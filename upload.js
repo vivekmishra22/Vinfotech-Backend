@@ -1,6 +1,6 @@
-// It's is a middleware to handle multipart/ form-data, commonly used for file upload
+// A middleware to handle multipart/ form-data, commonly used for file upload
 const multer = require('multer')        
-// Node.js modue to handle and transforming file paths, it is also used to contruct file path in platform-independent manner
+// Node.js module to handle and transforming file paths, it is also used to contruct file path in platform-independent manner
 const path = require('path')            
 
 // Setting up storage configuration for uploaded files 
@@ -9,13 +9,15 @@ const photoStorage = multer.diskStorage({
     // Define the destination directory for uploaded files( where uploaded files will be stored )
     destination: (req, file, cb) => {             
         // `cb` is a callback function used to set the destination( where files will be saved )
-        // `null` indicates no error, and the second argument is the destination path
+
+        // path.join is used to construct file paths in a platform-independent manner.
         cb(null, path.join(__dirname, './Images'))      // Saves/stores files inside the "Images" folder in the current directory
     },
 
     // Define the filename for uploaded files
     filename: (req, file, cb) => {
-
+        
+        // `null` indicates no error, and the second argument is the destination path
         // The original file name is used as the storage name
         cb(null, file.originalname)
     }
