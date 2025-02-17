@@ -1,3 +1,4 @@
+// Import the model (from the Model.js file) which is used to interact with the database.
 const model = require('./Registration_Model');
 const bcrypt = require('bcrypt');
 
@@ -6,20 +7,23 @@ const jwt = require('jsonwebtoken');
 const secret = 'mysecretkey';
 const saltRounds = 10; // Number of salt rounds for bcrypt
 
-// get api
-
+// GET API ( fetch all data from the database )
 const getuser = async (req, res) => {
     try {
+        // Fetch all records from the database using the 'find' method
+        // The 'await' keyword waits until the promise is resolved or rejected.
         const data = await model.find()
+        // Send the fetched data as a response with a 200 status code
         res.status(200).send({ data })
     } catch (error) {
+        // Log the error to the console for debugging
         console.log(error);
+        // If an error occurs during fetching, log it and Send a 500 status code with an error message as a response
         return res.status(400).json({ message: 'internal server error' })
     }
 }
 
 
-// post api 
 //post the user details for login
 const reguser = async (req, res) => {
     const { fname, email, password, mobile, address, city, gender, subject } = req.body;
@@ -100,48 +104,51 @@ const login = async (req, res) => {
 //     }
 // }
 
-// Delete api
+// DELETE API (Delete Data by ID)
 
 const deleteuser = async (req, res) => {
     try {
+        // Use the ID from the URL params(parameters) to Delete a document from the database
         const data = await model.deleteOne({ _id: req.params.id })
+        // Send the deletion result as a response with a 200 status code
         res.status(200).send({ data })
     } catch (error) {
+        // If an error occurs, send back a 500 error response
         res.status(500).send(error)
     }
 }
 
 // Update api
 
-const updateuser = async (req, res) => {
-    const { fname, email, password, mobile, address, city, gender, subject } = req.body;
-    try {
-        const data = await model.updateOne(
-            { _id: req.params._id },
-            {
-                $set: {
-                    fname,
-                    email,
-                    password,
-                    mobile,
-                    address,
-                    city,
-                    gender,
-                    subject
-                },
-            }
-        );
+// const updateuser = async (req, res) => {
+//     const { fname, email, password, mobile, address, city, gender, subject } = req.body;
+//     try {
+//         const data = await model.updateOne(
+//             { _id: req.params._id },
+//             {
+//                 $set: {
+//                     fname,
+//                     email,
+//                     password,
+//                     mobile,
+//                     address,
+//                     city,
+//                     gender,
+//                     subject
+//                 },
+//             }
+//         );
 
-        if (data) {
-            res.status(200).send({ message: "User updated found" });
-        } else {
-            res.status(404).send({ message: "User not found" });
-        }
+//         if (data) {
+//             res.status(200).send({ message: "User updated found" });
+//         } else {
+//             res.status(404).send({ message: "User not found" });
+//         }
 
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ message: "internal server error" });
-    }
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).send({ message: "internal server error" });
+//     }
 }
 
 
